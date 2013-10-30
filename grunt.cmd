@@ -24,13 +24,12 @@ if not exist %GRUNT_DIR%\grunt-runner\nvmw\nvmw.bat (
     )
 )
 
-:: === Get relevant version of Node ===
+:: === Get the right version of Node ===
 FOR /F "usebackq tokens=*" %%r in (`CSCRIPT /nologo %GRUNT_DIR%\grunt-runner\version_of.js node`) DO SET VERSION_NODE_OR_ERROR=%%r
 if not "x%VERSION_NODE_OR_ERROR:ERROR=%"=="x%VERSION_NODE_OR_ERROR%" (
     echo %VERSION_NODE_OR_ERROR%
     exit /b 1
 )
-
 set VERSION_NODE=%VERSION_NODE_OR_ERROR%
 
 :: === Install Node if it isn't already installed
